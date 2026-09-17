@@ -5,18 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Jakhura — AI Systems Agency</title>
 <meta name="description" content="Jakhura is a UK-based AI systems agency. We build AI automations, LLM integrations, custom AI tools and AI-powered products that ship.">
+<meta name="theme-color" content="#001336">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0B0F17; --surface:#121826; --surface-2:#1A2130; --border:#232B3B;
-    --text:#F8FAFC; --text-muted:#94A3B8; --text-dim:#64748B;
-    --primary:#6D5EF7; --primary-600:#5A4BE0; --secondary:#22D3EE; --success:#34D399;
-    --grad:linear-gradient(135deg,#6D5EF7 0%,#22D3EE 100%);
+    /* Brand palette — sampled from img/logo.png
+       primary  #02BEFE (logo cyan)  ·  bg #001336 (logo navy) */
+    --bg:#001336; --surface:#041C44; --surface-2:#082653; --border:#103367;
+    --text:#EAF6FF; --text-muted:#93B2D1; --text-dim:#6187AD;
+    --primary:#02BEFE; --primary-600:#0198D4; --primary-300:#6BDBFF;
+    --secondary:#02BEFE; --success:#02BEFE;
+    --grad:linear-gradient(135deg,#6BDBFF 0%,#02BEFE 52%,#0192CD 100%);
+    --primary-a12:rgba(2,190,254,.12); --primary-a25:rgba(2,190,254,.25); --primary-a45:rgba(2,190,254,.45);
     --r-sm:8px; --r-md:12px; --r-lg:16px; --r-xl:24px; --r-pill:999px;
     --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s6:24px; --s8:32px; --s12:48px; --s16:64px; --s24:96px;
-    --shadow:0 8px 30px rgba(0,0,0,.35); --glow:0 0 40px rgba(109,94,247,.35);
+    --shadow:0 8px 30px rgba(0,6,22,.5); --glow:0 0 40px rgba(2,190,254,.32);
     --container:1200px;
     color-scheme: dark;
     padding-top: env(safe-area-inset-top, 0px);
@@ -91,7 +98,7 @@
     content:'';
     width:6px; height:6px;
     border-radius:50%;
-    background: var(--text-dim);
+    background: var(--primary);
     flex-shrink:0;
   }
 
@@ -128,16 +135,16 @@
   }
   .btn-primary{
     background: var(--grad);
-    color: #0B0F17;
+    color: #001336;
     box-shadow: var(--glow);
   }
-  .btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 0 55px rgba(109,94,247,.5); }
+  .btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 0 55px rgba(2,190,254,.45); }
   .btn-ghost{
-    background: rgba(255,255,255,.02);
+    background: rgba(2,190,254,.05);
     color: var(--text);
     border-color: var(--border);
   }
-  .btn-ghost:hover{ border-color: var(--text-dim); background: rgba(255,255,255,.05); }
+  .btn-ghost:hover{ border-color: var(--primary-a45); background: var(--primary-a12); color: var(--text); }
   .btn-sm{ padding: 0.6rem 1.2rem; font-size: 0.85rem; }
 
   /* Header */
@@ -145,7 +152,7 @@
     position: sticky;
     top: env(safe-area-inset-top, 0px);
     z-index: 100;
-    background: rgba(11,15,23,.7);
+    background: rgba(0,19,54,.72);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border-bottom: 1px solid transparent;
@@ -153,7 +160,7 @@
   }
   .site-header.scrolled{
     border-bottom-color: var(--border);
-    box-shadow: 0 10px 30px rgba(0,0,0,.25);
+    box-shadow: 0 10px 30px rgba(0,6,22,.35);
   }
   .nav-inner{
     display:flex;
@@ -163,7 +170,7 @@
     padding-block: var(--s3);
   }
   .logo-link{ display:flex; align-items:center; flex-shrink:0; }
-  .logo-link svg{ height: 40px; width: auto; }
+  .logo-link img{ height: 44px; width: auto; display:block; }
 
   .nav-links{
     display:none;
@@ -207,7 +214,7 @@
     position: fixed;
     inset: 0;
     z-index: 200;
-    background: rgba(8,10,16,.6);
+    background: rgba(0,10,30,.66);
     backdrop-filter: blur(4px);
     opacity: 0;
     pointer-events: none;
@@ -262,7 +269,7 @@
     z-index: 0;
     pointer-events: none;
     background-image:
-      radial-gradient(circle at 1px 1px, rgba(255,255,255,0.07) 1px, transparent 0);
+      radial-gradient(circle at 1px 1px, rgba(2,190,254,0.16) 1px, transparent 0);
     background-size: 28px 28px;
     -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 40%, transparent 90%);
     mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 40%, transparent 90%);
@@ -277,12 +284,12 @@
   .orb-1{
     width: 480px; height: 480px;
     top: -160px; left: -120px;
-    background: radial-gradient(circle, rgba(109,94,247,.35), transparent 70%);
+    background: radial-gradient(circle, rgba(2,190,254,.30), transparent 70%);
   }
   .orb-2{
     width: 420px; height: 420px;
     top: 60px; right: -140px;
-    background: radial-gradient(circle, rgba(34,211,238,.28), transparent 70%);
+    background: radial-gradient(circle, rgba(2,190,254,.20), transparent 70%);
   }
   .hero-content{
     position: relative;
@@ -353,7 +360,7 @@
 
   /* Glass card */
   .glass{
-    background: rgba(255,255,255,.03);
+    background: rgba(2,190,254,.04);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid var(--border);
@@ -377,9 +384,9 @@
     transition: border-color .2s ease, transform .2s ease, background .2s ease;
   }
   .service-card:hover{
-    border-color: var(--text-dim);
+    border-color: var(--primary-a45);
     transform: translateY(-4px);
-    background: rgba(255,255,255,.05);
+    background: var(--primary-a12);
   }
   .service-icon{
     width: 48px; height: 48px;
@@ -445,12 +452,12 @@
     flex-direction:column;
     transition: transform .2s ease, border-color .2s ease;
   }
-  .work-card:hover{ transform: translateY(-4px); border-color: var(--text-dim); }
+  .work-card:hover{ transform: translateY(-4px); border-color: var(--primary-a45); }
   .work-thumb{
     height: 180px;
     position:relative;
     background:
-      radial-gradient(circle at 1px 1px, rgba(255,255,255,0.08) 1px, transparent 0) 0 0/20px 20px,
+      radial-gradient(circle at 1px 1px, rgba(2,190,254,0.16) 1px, transparent 0) 0 0/20px 20px,
       var(--surface-2);
     border-bottom: 1px solid var(--border);
   }
@@ -483,7 +490,7 @@
     padding: var(--s12) var(--s6);
     overflow:hidden;
   }
-  .stats-band{ border-color: var(--text-dim); }
+  .stats-band{ border-color: var(--primary-a45); }
   .stats-grid{
     position:relative;
     display:grid;
@@ -582,7 +589,7 @@
     content:'';
     position:absolute;
     inset: -40%;
-    background: radial-gradient(ellipse at center, rgba(148,163,184,.12), transparent 60%);
+    background: radial-gradient(ellipse at center, rgba(2,190,254,.14), transparent 60%);
     pointer-events:none;
   }
   .final-cta-inner{ position:relative; max-width: 620px; margin-inline:auto; }
@@ -604,7 +611,7 @@
   @media (min-width: 768px){
     .footer-top{ grid-template-columns: 1.4fr repeat(3, 1fr); }
   }
-  .footer-brand svg{ height:40px; width:auto; margin-bottom: var(--s4); }
+  .footer-brand img{ height:44px; width:auto; display:block; margin-bottom: var(--s4); }
   .footer-brand p{ max-width: 280px; font-size: 0.9rem; }
   .footer-col h4{
     font-family: 'JetBrains Mono', monospace;
@@ -635,14 +642,14 @@
     left: -9999px;
     top: 0;
     background: var(--primary);
-    color:#fff;
+    color:#001336;
     padding: var(--s3) var(--s4);
     border-radius: var(--r-sm);
     z-index: 999;
   }
   .skip-link:focus{ left: var(--s4); top: var(--s4); }
 
-  ::selection{ background: var(--primary); color: #fff; }
+  ::selection{ background: var(--primary); color: #001336; }
 </style>
 </head>
 <body>
@@ -652,14 +659,7 @@
 <header class="site-header" id="siteHeader">
   <div class="container nav-inner">
     <a href="#" class="logo-link" aria-label="Jakhura home">
-      <svg viewBox="0 0 260 72" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Jakhura AI Systems">
-        <defs><linearGradient id="jak" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6D5EF7"/><stop offset="1" stop-color="#22D3EE"/></linearGradient></defs>
-        <rect x="0" y="0" width="72" height="72" rx="18" fill="url(#jak)"/>
-        <circle cx="46" cy="20" r="4" fill="#fff"/>
-        <path d="M46 28 L46 44 Q46 52 38 52 Q30 52 30 45" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-        <text x="92" y="40" font-family="'Space Grotesk',sans-serif" font-size="27" font-weight="700" letter-spacing="1.5" fill="#F8FAFC">JAKHURA</text>
-        <text x="93" y="58" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="500" letter-spacing="5" fill="#94A3B8">AI SYSTEMS</text>
-      </svg>
+      <img src="img/logo-mark.png" width="831" height="260" alt="Jakhura — Smart AI Solutions">
     </a>
 
     <nav class="nav-links" aria-label="Primary">
@@ -934,14 +934,7 @@
   <div class="container">
     <div class="footer-top">
       <div class="footer-brand">
-        <svg viewBox="0 0 260 72" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Jakhura AI Systems">
-          <defs><linearGradient id="jakFooter" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6D5EF7"/><stop offset="1" stop-color="#22D3EE"/></linearGradient></defs>
-          <rect x="0" y="0" width="72" height="72" rx="18" fill="url(#jakFooter)"/>
-          <circle cx="46" cy="20" r="4" fill="#fff"/>
-          <path d="M46 28 L46 44 Q46 52 38 52 Q30 52 30 45" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-          <text x="92" y="40" font-family="'Space Grotesk',sans-serif" font-size="27" font-weight="700" letter-spacing="1.5" fill="#F8FAFC">JAKHURA</text>
-          <text x="93" y="58" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="500" letter-spacing="5" fill="#94A3B8">AI SYSTEMS</text>
-        </svg>
+        <img src="img/logo-mark.png" width="831" height="260" alt="Jakhura — Smart AI Solutions">
         <p>AI systems that ship. A UK-based agency building automations, LLM integrations, and custom AI tools for production.</p>
       </div>
       <div class="footer-col">
