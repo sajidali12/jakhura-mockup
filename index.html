@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jakhura — AI Systems Agency</title>
+<meta name="description" content="Jakhura is a UK-based AI systems agency. We build AI automations, LLM integrations, custom AI tools and AI-powered products that ship.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B0F17; --surface:#121826; --surface-2:#1A2130; --border:#232B3B;
+    --text:#F8FAFC; --text-muted:#94A3B8; --text-dim:#64748B;
+    --primary:#6D5EF7; --primary-600:#5A4BE0; --secondary:#22D3EE; --success:#34D399;
+    --grad:linear-gradient(135deg,#6D5EF7 0%,#22D3EE 100%);
+    --r-sm:8px; --r-md:12px; --r-lg:16px; --r-xl:24px; --r-pill:999px;
+    --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s6:24px; --s8:32px; --s12:48px; --s16:64px; --s24:96px;
+    --shadow:0 8px 30px rgba(0,0,0,.35); --glow:0 0 40px rgba(109,94,247,.35);
+    --container:1200px;
+    color-scheme: dark;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  *,*::before,*::after{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+    *,*::before,*::after{ animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+  }
+
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  img{ max-width:100%; display:block; }
+  [hidden]{ display:none !important; }
+
+  h1,h2,h3,h4{
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin: 0;
+    color: var(--text);
+  }
+
+  h1{ font-size: clamp(2.5rem, 5vw, 4rem); }
+  h2{ font-size: clamp(1.8rem, 3vw, 2.5rem); }
+  h3{ font-size: 1.25rem; font-weight: 600; }
+
+  p{ margin: 0; color: var(--text-muted); }
+
+  a{ color: inherit; text-decoration: none; }
+
+  .mono{
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 500;
+  }
+
+  .container{
+    max-width: var(--container);
+    margin: 0 auto;
+    padding-inline: var(--s4);
+  }
+  @media (min-width: 768px){
+    .container{ padding-inline: var(--s8); }
+  }
+
+  section{ position: relative; }
+
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap: var(--s2);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .eyebrow::before{
+    content:'';
+    width:6px; height:6px;
+    border-radius:50%;
+    background: var(--text-dim);
+    flex-shrink:0;
+  }
+
+  .grad-text{
+    background: var(--grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .accent-text{
+    color: var(--primary);
+  }
+
+  /* Buttons */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap: var(--s2);
+    padding: 0.85rem 1.6rem;
+    border-radius: var(--r-pill);
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
+    white-space: nowrap;
+  }
+  .btn:focus-visible{
+    outline: 2px solid var(--secondary);
+    outline-offset: 3px;
+  }
+  .btn-primary{
+    background: var(--grad);
+    color: #0B0F17;
+    box-shadow: var(--glow);
+  }
+  .btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 0 55px rgba(109,94,247,.5); }
+  .btn-ghost{
+    background: rgba(255,255,255,.02);
+    color: var(--text);
+    border-color: var(--border);
+  }
+  .btn-ghost:hover{ border-color: var(--text-dim); background: rgba(255,255,255,.05); }
+  .btn-sm{ padding: 0.6rem 1.2rem; font-size: 0.85rem; }
+
+  /* Header */
+  .site-header{
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 100;
+    background: rgba(11,15,23,.7);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid transparent;
+    transition: border-color .25s ease, box-shadow .25s ease;
+  }
+  .site-header.scrolled{
+    border-bottom-color: var(--border);
+    box-shadow: 0 10px 30px rgba(0,0,0,.25);
+  }
+  .nav-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap: var(--s4);
+    padding-block: var(--s3);
+  }
+  .logo-link{ display:flex; align-items:center; flex-shrink:0; }
+  .logo-link svg{ height: 40px; width: auto; }
+
+  .nav-links{
+    display:none;
+    align-items:center;
+    gap: var(--s8);
+  }
+  .nav-links a{
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    transition: color .15s ease;
+    position: relative;
+  }
+  .nav-links a:hover, .nav-links a:focus-visible{ color: var(--text); }
+  .nav-links a:focus-visible{ outline: 2px solid var(--secondary); outline-offset: 4px; border-radius: 4px; }
+
+  .nav-cta-wrap{ display:flex; align-items:center; gap: var(--s4); }
+  .nav-cta-wrap .btn-primary{ display:none; }
+
+  .hamburger{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width: 44px; height: 44px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    color: var(--text);
+    cursor:pointer;
+    flex-shrink:0;
+  }
+  .hamburger:focus-visible{ outline: 2px solid var(--secondary); outline-offset: 2px; }
+
+  @media (min-width: 960px){
+    .nav-links{ display:flex; }
+    .nav-cta-wrap .btn-primary{ display:inline-flex; }
+    .hamburger{ display:none; }
+  }
+
+  .mobile-menu{
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(8,10,16,.6);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s ease;
+  }
+  .mobile-menu.open{ opacity:1; pointer-events:auto; }
+  .mobile-menu-panel{
+    position:absolute;
+    top:0; right:0;
+    height:100%;
+    width: min(320px, 85vw);
+    background: var(--surface);
+    border-left: 1px solid var(--border);
+    padding: var(--s6) var(--s6);
+    padding-top: calc(var(--s6) + env(safe-area-inset-top, 0px));
+    display:flex;
+    flex-direction:column;
+    gap: var(--s6);
+    transform: translateX(100%);
+    transition: transform .3s ease;
+  }
+  .mobile-menu.open .mobile-menu-panel{ transform: translateX(0); }
+  .mobile-menu-top{ display:flex; align-items:center; justify-content:flex-end; }
+  .mobile-menu-close{
+    width:40px; height:40px;
+    display:flex; align-items:center; justify-content:center;
+    background: transparent; border: 1px solid var(--border); border-radius: var(--r-md);
+    color: var(--text); cursor:pointer;
+  }
+  .mobile-menu-close:focus-visible{ outline: 2px solid var(--secondary); outline-offset: 2px; }
+  .mobile-nav-links{ display:flex; flex-direction:column; gap: var(--s2); }
+  .mobile-nav-links a{
+    padding: var(--s3) 0;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+  }
+  .mobile-nav-links a:focus-visible{ outline: 2px solid var(--secondary); outline-offset: 2px; }
+
+  /* Hero */
+  .hero{
+    position: relative;
+    padding-top: var(--s24);
+    padding-bottom: var(--s24);
+    overflow: hidden;
+  }
+  .hero-bg{
+    position: absolute;
+    inset: -10% -10% auto -10%;
+    height: 140%;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(255,255,255,0.07) 1px, transparent 0);
+    background-size: 28px 28px;
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 40%, transparent 90%);
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 40%, transparent 90%);
+  }
+  .orb{
+    position:absolute;
+    border-radius:50%;
+    filter: blur(70px);
+    z-index:0;
+    pointer-events:none;
+  }
+  .orb-1{
+    width: 480px; height: 480px;
+    top: -160px; left: -120px;
+    background: radial-gradient(circle, rgba(109,94,247,.35), transparent 70%);
+  }
+  .orb-2{
+    width: 420px; height: 420px;
+    top: 60px; right: -140px;
+    background: radial-gradient(circle, rgba(34,211,238,.28), transparent 70%);
+  }
+  .hero-content{
+    position: relative;
+    z-index: 1;
+    max-width: 780px;
+  }
+  .hero h1{ margin-top: var(--s4); }
+  .hero-sub{
+    margin-top: var(--s6);
+    font-size: 1.15rem;
+    max-width: 560px;
+  }
+  .hero-ctas{
+    display:flex;
+    flex-wrap: wrap;
+    gap: var(--s4);
+    margin-top: var(--s8);
+  }
+  .trust-row{
+    margin-top: var(--s16);
+    position: relative;
+    z-index:1;
+  }
+  .trust-label{
+    color: var(--text-dim);
+    font-size: 0.7rem;
+    margin-bottom: var(--s4);
+    display:block;
+  }
+  .trust-logos{
+    display:flex;
+    flex-wrap: wrap;
+    gap: var(--s8);
+    align-items:center;
+  }
+  .trust-logo{
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--text-dim);
+    letter-spacing: 0.02em;
+    opacity: .8;
+  }
+
+  /* Reveal animation */
+  .reveal{
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  .reveal.in-view{
+    opacity: 1;
+    transform: translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity:1; transform:none; transition:none; }
+  }
+
+  /* Section header */
+  .section-head{
+    max-width: 640px;
+    margin-bottom: var(--s12);
+  }
+  .section-head h2{ margin-top: var(--s4); }
+  .section-head p{ margin-top: var(--s4); font-size: 1.05rem; }
+
+  .section-pad{ padding-block: var(--s24); }
+
+  /* Glass card */
+  .glass{
+    background: rgba(255,255,255,.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+  }
+
+  /* Services grid */
+  .services-grid{
+    display:grid;
+    grid-template-columns: 1fr;
+    gap: var(--s6);
+  }
+  @media (min-width: 640px){
+    .services-grid{ grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1024px){
+    .services-grid{ grid-template-columns: repeat(3, 1fr); }
+  }
+  .service-card{
+    padding: var(--s8);
+    transition: border-color .2s ease, transform .2s ease, background .2s ease;
+  }
+  .service-card:hover{
+    border-color: var(--text-dim);
+    transform: translateY(-4px);
+    background: rgba(255,255,255,.05);
+  }
+  .service-icon{
+    width: 48px; height: 48px;
+    border-radius: var(--r-md);
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    display:flex; align-items:center; justify-content:center;
+    color: var(--secondary);
+    margin-bottom: var(--s6);
+  }
+  .service-icon svg{ width: 22px; height: 22px; }
+  .service-card h3{ margin-bottom: var(--s2); }
+  .service-card p{ font-size: 0.95rem; }
+
+  /* Process */
+  .process-wrap{
+    position: relative;
+    display:grid;
+    grid-template-columns: 1fr;
+    gap: var(--s8);
+  }
+  @media (min-width: 900px){
+    .process-wrap{ grid-template-columns: repeat(4, 1fr); }
+    .process-wrap::before{
+      content:'';
+      position:absolute;
+      top: 24px;
+      left: 8%;
+      right: 8%;
+      height: 1px;
+      background: var(--border);
+      z-index:0;
+    }
+  }
+  .process-step{ position:relative; z-index:1; }
+  .process-num{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width: 48px; height:48px;
+    border-radius:50%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--secondary);
+    font-size: 0.85rem;
+    margin-bottom: var(--s4);
+  }
+  .process-step h3{ margin-bottom: var(--s2); }
+  .process-step p{ font-size: 0.95rem; }
+
+  /* Work */
+  .work-grid{
+    display:grid;
+    grid-template-columns: 1fr;
+    gap: var(--s6);
+  }
+  @media (min-width: 768px){
+    .work-grid{ grid-template-columns: repeat(3, 1fr); }
+  }
+  .work-card{
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    transition: transform .2s ease, border-color .2s ease;
+  }
+  .work-card:hover{ transform: translateY(-4px); border-color: var(--text-dim); }
+  .work-thumb{
+    height: 180px;
+    position:relative;
+    background:
+      radial-gradient(circle at 1px 1px, rgba(255,255,255,0.08) 1px, transparent 0) 0 0/20px 20px,
+      var(--surface-2);
+    border-bottom: 1px solid var(--border);
+  }
+  .work-body{ padding: var(--s6); display:flex; flex-direction:column; gap: var(--s3); flex:1; }
+  .chip-row{ display:flex; flex-wrap:wrap; gap: var(--s2); }
+  .chip{
+    font-size: 0.7rem;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    border-radius: var(--r-pill);
+    padding: 0.25rem 0.7rem;
+  }
+  .work-metric{
+    margin-top: auto;
+    padding-top: var(--s3);
+    border-top: 1px solid var(--border);
+    color: var(--success);
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  /* Stats band */
+  .stats-band{
+    border-radius: var(--r-xl);
+    border: 1px solid var(--border);
+    position: relative;
+    padding: var(--s12) var(--s6);
+    overflow:hidden;
+  }
+  .stats-band{ border-color: var(--text-dim); }
+  .stats-grid{
+    position:relative;
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--s8);
+    text-align:center;
+  }
+  @media (min-width: 768px){
+    .stats-grid{ grid-template-columns: repeat(4, 1fr); }
+  }
+  .stat-num{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 500;
+    color: var(--text);
+    letter-spacing: 0.02em;
+  }
+  .stat-label{
+    margin-top: var(--s2);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  /* Marquee */
+  .marquee-section{ padding-block: var(--s16); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .marquee-viewport{
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  }
+  .marquee-track{
+    display:flex;
+    width: max-content;
+    gap: var(--s16);
+    animation: marquee 28s linear infinite;
+  }
+  @keyframes marquee{
+    from{ transform: translateX(0); }
+    to{ transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .marquee-track{ animation: none; overflow-x:auto; }
+  }
+  .marquee-item{
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: var(--text-dim);
+    white-space: nowrap;
+    flex-shrink:0;
+  }
+
+  /* Testimonial */
+  .testimonial{
+    max-width: 820px;
+    margin-inline: auto;
+    text-align:center;
+    padding: var(--s16) var(--s6);
+  }
+  .testimonial blockquote{
+    margin:0;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--text);
+  }
+  .testimonial-author{
+    margin-top: var(--s8);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap: var(--s1);
+  }
+  .testimonial-avatar{
+    width:48px; height:48px;
+    border-radius:50%;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    margin-bottom: var(--s3);
+  }
+  .testimonial-name{ font-weight:600; color: var(--text); }
+  .testimonial-role{ font-size: 0.85rem; color: var(--text-dim); }
+
+  /* Final CTA */
+  .final-cta{
+    position: relative;
+    border-radius: var(--r-xl);
+    padding: var(--s16) var(--s6);
+    text-align:center;
+    overflow:hidden;
+    border: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .final-cta::before{
+    content:'';
+    position:absolute;
+    inset: -40%;
+    background: radial-gradient(ellipse at center, rgba(148,163,184,.12), transparent 60%);
+    pointer-events:none;
+  }
+  .final-cta-inner{ position:relative; max-width: 620px; margin-inline:auto; }
+  .final-cta h2{ margin-bottom: var(--s6); }
+  .final-cta .btn{ margin-inline:auto; }
+
+  /* Footer */
+  footer{
+    border-top: 1px solid var(--border);
+    padding-top: var(--s16);
+    padding-bottom: var(--s8);
+  }
+  .footer-top{
+    display:grid;
+    grid-template-columns: 1fr;
+    gap: var(--s12);
+    padding-bottom: var(--s12);
+  }
+  @media (min-width: 768px){
+    .footer-top{ grid-template-columns: 1.4fr repeat(3, 1fr); }
+  }
+  .footer-brand svg{ height:40px; width:auto; margin-bottom: var(--s4); }
+  .footer-brand p{ max-width: 280px; font-size: 0.9rem; }
+  .footer-col h4{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: var(--s4);
+    font-weight: 500;
+  }
+  .footer-col ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap: var(--s3); }
+  .footer-col a{ color: var(--text-muted); font-size: 0.92rem; transition: color .15s ease; }
+  .footer-col a:hover, .footer-col a:focus-visible{ color: var(--text); }
+  .footer-col a:focus-visible{ outline: 2px solid var(--secondary); outline-offset: 3px; border-radius:4px; }
+  .footer-bottom{
+    border-top: 1px solid var(--border);
+    padding-top: var(--s8);
+    display:flex;
+    flex-wrap:wrap;
+    gap: var(--s4);
+    justify-content:space-between;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+  }
+
+  .skip-link{
+    position:absolute;
+    left: -9999px;
+    top: 0;
+    background: var(--primary);
+    color:#fff;
+    padding: var(--s3) var(--s4);
+    border-radius: var(--r-sm);
+    z-index: 999;
+  }
+  .skip-link:focus{ left: var(--s4); top: var(--s4); }
+
+  ::selection{ background: var(--primary); color: #fff; }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="site-header" id="siteHeader">
+  <div class="container nav-inner">
+    <a href="#" class="logo-link" aria-label="Jakhura home">
+      <svg viewBox="0 0 260 72" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Jakhura AI Systems">
+        <defs><linearGradient id="jak" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6D5EF7"/><stop offset="1" stop-color="#22D3EE"/></linearGradient></defs>
+        <rect x="0" y="0" width="72" height="72" rx="18" fill="url(#jak)"/>
+        <circle cx="46" cy="20" r="4" fill="#fff"/>
+        <path d="M46 28 L46 44 Q46 52 38 52 Q30 52 30 45" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="92" y="40" font-family="'Space Grotesk',sans-serif" font-size="27" font-weight="700" letter-spacing="1.5" fill="#F8FAFC">JAKHURA</text>
+        <text x="93" y="58" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="500" letter-spacing="5" fill="#94A3B8">AI SYSTEMS</text>
+      </svg>
+    </a>
+
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#process">Process</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="nav-cta-wrap">
+      <a href="#contact" class="btn btn-primary btn-sm">Book a call</a>
+      <button class="hamburger" id="menuOpenBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-panel" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+    <div class="mobile-menu-top">
+      <button class="mobile-menu-close" id="menuCloseBtn" aria-label="Close menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <nav class="mobile-nav-links" aria-label="Mobile primary">
+      <a href="#services" data-close-menu>Services</a>
+      <a href="#work" data-close-menu>Work</a>
+      <a href="#process" data-close-menu>Process</a>
+      <a href="#about" data-close-menu>About</a>
+      <a href="#contact" data-close-menu>Contact</a>
+    </nav>
+    <a href="#contact" class="btn btn-primary" data-close-menu>Book a call</a>
+  </div>
+</div>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="orb orb-1" aria-hidden="true"></div>
+    <div class="orb orb-2" aria-hidden="true"></div>
+    <div class="container">
+      <div class="hero-content">
+        <span class="eyebrow mono">AI Systems Agency</span>
+        <h1>AI systems that <span class="grad-text">ship.</span></h1>
+        <p class="hero-sub">Jakhura designs and builds AI automations, LLM integrations, and custom tools that run in production — not in a slide deck. UK-based, engineering-led, outcome-first.</p>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn btn-primary">Book a call</a>
+          <a href="#work" class="btn btn-ghost">See our work</a>
+        </div>
+      </div>
+      <div class="trust-row reveal">
+        <span class="trust-label mono">Trusted by teams at</span>
+        <div class="trust-logos">
+          <span class="trust-logo">Northgate</span>
+          <span class="trust-logo">Vantree</span>
+          <span class="trust-logo">Corvus&nbsp;Retail</span>
+          <span class="trust-logo">Almerix</span>
+          <span class="trust-logo">Fieldstone</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section-pad" id="services">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow mono">What we build</span>
+        <h2>AI, engineered for production</h2>
+        <p>Six ways we help businesses turn AI capability into working software.</p>
+      </div>
+      <div class="services-grid">
+        <div class="glass service-card reveal">
+          <div class="service-icon"><i data-lucide="workflow" aria-hidden="true"></i></div>
+          <h3>AI Automation</h3>
+          <p>We replace manual workflows with agents and pipelines that run themselves, reliably.</p>
+        </div>
+        <div class="glass service-card reveal">
+          <div class="service-icon"><i data-lucide="plug-zap" aria-hidden="true"></i></div>
+          <h3>LLM Integration</h3>
+          <p>Drop-in LLM features wired into your existing product, stack, and data with proper guardrails.</p>
+        </div>
+        <div class="glass service-card reveal">
+          <div class="service-icon"><i data-lucide="wrench" aria-hidden="true"></i></div>
+          <h3>Custom AI Tools</h3>
+          <p>Internal copilots and bespoke tools built around how your team actually works.</p>
+        </div>
+        <div class="glass service-card reveal">
+          <div class="service-icon"><i data-lucide="database" aria-hidden="true"></i></div>
+          <h3>RAG & Knowledge Systems</h3>
+          <p>Search and retrieval over your own documents and data, grounded and citation-backed.</p>
+        </div>
+        <div class="glass service-card reveal">
+          <div class="service-icon"><i data-lucide="layout-panel-left" aria-hidden="true"></i></div>
+          <h3>AI Web Apps</h3>
+          <p>Full-stack AI-native products, from prototype to a polished, scalable release.</p>
+        </div>
+        <div class="glass service-card reveal">
+          <div class="service-icon"><i data-lucide="server-cog" aria-hidden="true"></i></div>
+          <h3>MLOps & Deployment</h3>
+          <p>Evaluation, monitoring, and infrastructure so your AI systems stay fast, safe, and cheap to run.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section-pad" id="process">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow mono">How it works</span>
+        <h2>From idea to production in four steps</h2>
+        <p>A tight loop that keeps scope honest and ships fast without cutting corners.</p>
+      </div>
+      <div class="process-wrap">
+        <div class="process-step reveal">
+          <span class="process-num mono">01</span>
+          <h3>Discover</h3>
+          <p>We map your workflows, data, and constraints to find the highest-leverage AI opportunity.</p>
+        </div>
+        <div class="process-step reveal">
+          <span class="process-num mono">02</span>
+          <h3>Design</h3>
+          <p>We spec the system architecture, model choice, and UX before a line of production code is written.</p>
+        </div>
+        <div class="process-step reveal">
+          <span class="process-num mono">03</span>
+          <h3>Build</h3>
+          <p>Our engineers build in short, visible sprints with working demos, not slideware.</p>
+        </div>
+        <div class="process-step reveal">
+          <span class="process-num mono">04</span>
+          <h3>Ship</h3>
+          <p>We deploy, monitor, and hand over a system your team can run and extend with confidence.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section class="section-pad" id="work">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow mono">Featured work</span>
+        <h2>Systems in production</h2>
+        <p>A sample of what we've shipped for clients across retail, logistics, and finance.</p>
+      </div>
+      <div class="work-grid">
+        <article class="glass work-card reveal">
+          <div class="work-thumb" role="img" aria-label="Case study preview graphic for support triage automation"></div>
+          <div class="work-body">
+            <div class="chip-row">
+              <span class="chip">Automation</span>
+              <span class="chip">LLM</span>
+            </div>
+            <h3>Support Triage Agent</h3>
+            <p>An LLM agent that classifies, routes, and drafts replies for inbound support tickets.</p>
+            <span class="work-metric">62% faster first response</span>
+          </div>
+        </article>
+        <article class="glass work-card reveal">
+          <div class="work-thumb" role="img" aria-label="Case study preview graphic for knowledge base search"></div>
+          <div class="work-body">
+            <div class="chip-row">
+              <span class="chip">RAG</span>
+              <span class="chip">Search</span>
+            </div>
+            <h3>Internal Knowledge Copilot</h3>
+            <p>Grounded search across 40,000+ internal documents with source-linked answers.</p>
+            <span class="work-metric">4.2hrs saved per employee / week</span>
+          </div>
+        </article>
+        <article class="glass work-card reveal">
+          <div class="work-thumb" role="img" aria-label="Case study preview graphic for pricing engine dashboard"></div>
+          <div class="work-body">
+            <div class="chip-row">
+              <span class="chip">AI Web App</span>
+              <span class="chip">MLOps</span>
+            </div>
+            <h3>Dynamic Pricing Engine</h3>
+            <p>A self-serve pricing dashboard backed by a forecasting model retrained nightly.</p>
+            <span class="work-metric">11% margin uplift in Q1</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="section-pad" id="about">
+    <div class="container">
+      <div class="stats-band glass reveal">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-num">500+</div>
+            <div class="stat-label mono">Projects Shipped</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">50+</div>
+            <div class="stat-label mono">AI Specialists</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">99.9%</div>
+            <div class="stat-label mono">Uptime</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">24/7</div>
+            <div class="stat-label mono">Support</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <section class="marquee-section" aria-label="Tools and platforms we work with">
+    <div class="marquee-viewport">
+      <div class="marquee-track">
+        <span class="marquee-item">OpenAI</span>
+        <span class="marquee-item">Anthropic</span>
+        <span class="marquee-item">LangChain</span>
+        <span class="marquee-item">Pinecone</span>
+        <span class="marquee-item">Postgres</span>
+        <span class="marquee-item">Docker</span>
+        <span class="marquee-item">AWS</span>
+        <span class="marquee-item">n8n</span>
+        <span class="marquee-item" aria-hidden="true">OpenAI</span>
+        <span class="marquee-item" aria-hidden="true">Anthropic</span>
+        <span class="marquee-item" aria-hidden="true">LangChain</span>
+        <span class="marquee-item" aria-hidden="true">Pinecone</span>
+        <span class="marquee-item" aria-hidden="true">Postgres</span>
+        <span class="marquee-item" aria-hidden="true">Docker</span>
+        <span class="marquee-item" aria-hidden="true">AWS</span>
+        <span class="marquee-item" aria-hidden="true">n8n</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section class="section-pad">
+    <div class="container">
+      <div class="testimonial reveal">
+        <blockquote>"Jakhura didn't just bolt on a chatbot — they rebuilt how our support team actually works. It shipped in six weeks and hasn't gone down since."</blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" aria-hidden="true"></div>
+          <span class="testimonial-name">Priya Chandra</span>
+          <span class="testimonial-role">Head of Operations, Corvus Retail</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="section-pad" id="contact">
+    <div class="container">
+      <div class="final-cta reveal">
+        <div class="final-cta-inner">
+          <h2>Let's build your next <span class="accent-text">AI system.</span></h2>
+          <a href="#contact" class="btn btn-primary">Book a call</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <svg viewBox="0 0 260 72" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Jakhura AI Systems">
+          <defs><linearGradient id="jakFooter" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6D5EF7"/><stop offset="1" stop-color="#22D3EE"/></linearGradient></defs>
+          <rect x="0" y="0" width="72" height="72" rx="18" fill="url(#jakFooter)"/>
+          <circle cx="46" cy="20" r="4" fill="#fff"/>
+          <path d="M46 28 L46 44 Q46 52 38 52 Q30 52 30 45" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="92" y="40" font-family="'Space Grotesk',sans-serif" font-size="27" font-weight="700" letter-spacing="1.5" fill="#F8FAFC">JAKHURA</text>
+          <text x="93" y="58" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="500" letter-spacing="5" fill="#94A3B8">AI SYSTEMS</text>
+        </svg>
+        <p>AI systems that ship. A UK-based agency building automations, LLM integrations, and custom AI tools for production.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">AI Automation</a></li>
+          <li><a href="#services">LLM Integration</a></li>
+          <li><a href="#services">Custom AI Tools</a></li>
+          <li><a href="#services">RAG & Knowledge Systems</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:hello@jakhura.com">hello@jakhura.com</a></li>
+          <li><a href="tel:+442012345678">+44 20 1234 5678</a></li>
+          <li><span style="color:var(--text-muted)">London, UK</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Jakhura AI Systems Ltd. All rights reserved.</span>
+      <span>jakhura.com</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/lucide@latest" defer></script>
+<script>
+(function(){
+  'use strict';
+
+  function ready(fn){
+    if(document.readyState !== 'loading'){ fn(); }
+    else{ document.addEventListener('DOMContentLoaded', fn); }
+  }
+
+  ready(function(){
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Init Lucide icons (script loads deferred; retry if not ready yet)
+    function initIcons(){
+      if(window.lucide && typeof window.lucide.createIcons === 'function'){
+        window.lucide.createIcons();
+      } else {
+        setTimeout(initIcons, 50);
+      }
+    }
+    initIcons();
+
+    // Sticky header shadow on scroll
+    var header = document.getElementById('siteHeader');
+    function onScroll(){
+      if(window.scrollY > 8){ header.classList.add('scrolled'); }
+      else{ header.classList.remove('scrolled'); }
+    }
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Mobile menu
+    var menu = document.getElementById('mobileMenu');
+    var openBtn = document.getElementById('menuOpenBtn');
+    var closeBtn = document.getElementById('menuCloseBtn');
+    var closeTargets = menu.querySelectorAll('[data-close-menu]');
+
+    function openMenu(){
+      menu.classList.add('open');
+      openBtn.setAttribute('aria-expanded', 'true');
+      closeBtn.focus();
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMenu(){
+      menu.classList.remove('open');
+      openBtn.setAttribute('aria-expanded', 'false');
+      openBtn.focus();
+      document.body.style.overflow = '';
+    }
+    openBtn.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', closeMenu);
+    closeTargets.forEach(function(el){ el.addEventListener('click', closeMenu); });
+    menu.addEventListener('click', function(e){
+      if(e.target === menu){ closeMenu(); }
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && menu.classList.contains('open')){ closeMenu(); }
+    });
+
+    // Reveal on scroll
+    var revealEls = document.querySelectorAll('.reveal');
+    if(reduceMotion || !('IntersectionObserver' in window)){
+      revealEls.forEach(function(el){ el.classList.add('in-view'); });
+    } else {
+      var observer = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      revealEls.forEach(function(el){ observer.observe(el); });
+    }
+  });
+})();
+</script>
+</body>
+</html>
